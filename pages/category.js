@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";  
-import Blogs from "../components/blogs";  
+import Blogs from "../components/Blogs";  
 import Query from "../components/query";  
 import CATEGORIES_BLOGS_QUERY from "../apollo/queries/category/blogs";
 
