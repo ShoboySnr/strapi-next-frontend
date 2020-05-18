@@ -29,12 +29,10 @@
     "react-dom": "16.13.1",
     "react-markdown": "^4.3.1",
     "react-moment": "^0.9.7",
+    "react-notify-toast": "^0.5.1",
     "react-stripe-elements": "^6.1.2",
     "recompose": "^0.30.0",
     "strapi-sdk-javascript": "^0.3.3"
-  },
-  "devDependencies": {
-    "react-notify-toast": "^0.5.1"
   },
   "engines": {
     "node": ">= 10.0.0",
