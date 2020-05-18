@@ -1,5 +1,5 @@
 import React from "react";
-
+import Cookies from "js-cookie";
 import CardSection from "./CardSection";
 import { injectStripe } from "react-stripe-elements";
 import Strapi from "strapi-sdk-javascript/build/main";
@@ -47,7 +47,12 @@ class CheckoutForm extends React.Component {
             token: res.token.id
           })
           .then(res => {
-            notify.show('Payment was successful', 'success');
+            notify.show('Payment was successful. Thank you', 'success');
+             this.state = {
+                items: [],
+                total: null
+             };
+            Cookies.set("cart", [])
             Router.push("/")
           });
       })
