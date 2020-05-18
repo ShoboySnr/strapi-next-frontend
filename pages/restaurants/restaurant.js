@@ -5,6 +5,7 @@ import Moment from "react-moment";
 import RESTAURANT_QUERY from "../../apollo/queries/restaurant/restaurant";
 import Link from "next/link";
 import defaultPage from "../../components/hocs/defaultPage";
+import DishCard from '../../components/DishCard';
 
 const Restaurant = () => {  
   const router = useRouter();
@@ -32,23 +33,19 @@ const Restaurant = () => {
               <div className="uk-container uk-container-small">
                 <ReactMarkdown source={restaurant.description} />
                 <h4 className="uk-text-danger">Dishes Served</h4>
-                <p>
-                  {restaurant.dishes.map((dish, i) => {
-                    return (
-                      <ul key={dish.id} className="uk-list uk-list-divider">
-                        <li>
-                          <Link href={{ pathname: "dishes", query: { id: dish.id } }}>
-                            <a>
-                              <p>
-                                {dish.name}
-                             </p>
-                            </a>
-                          </Link>
-                        </li>
-                      </ul> 
-                    )
-                  })}
-                </p>
+                <div className="uk-flex">
+                  {
+                    restaurant.dishes.length > 0 ? (
+                    <div className="uk-child-width-1-4@m uk-grid-match" data-uk-grid>
+                      {restaurant.dishes.map((dish, i) => {
+                          return (
+                          <DishCard dish={dish} key={`blog__${restaurant.id}`} />
+                          )
+                        })}
+                    </div>
+                    ) : (<p>Sorry No dish was found for this restaurant</p>)
+                  }
+                </div>
                 <hr />
                 <p> Published on: {' '}
                   <Moment format="MMM Do YYYY">{restaurant.updated_at}</Moment>

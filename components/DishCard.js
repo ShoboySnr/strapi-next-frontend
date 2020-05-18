@@ -39,7 +39,7 @@ class DishCard extends React.Component {
             {dish.name}
           </p>
             <p>
-              {dish.description}
+              {dish.description.substring(0, 100)}
             </p>  
           <p id="price" className="uk-text-large">
             Price: ₦{dish.price}

@@ -64,7 +64,7 @@ class SignIn extends React.Component {
             </span>
             </div>
             <div className="uk-padding-small uk-text-center">
-              <button class="uk-button uk-button-primary" type="submit" onClick={this.onSubmit.bind(this)}> Create account</button>
+              <button class="uk-button uk-button-primary" type="submit" onClick={this.onSubmit.bind(this)}> Sign In</button>
             </div>
             <div className="uk-text-center">
               <Link href="/signup">

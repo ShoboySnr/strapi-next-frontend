@@ -50,7 +50,7 @@ class Nav extends React.Component {
                 </li>
                 <li>
                   <Link href="/carts">
-                    <a className="uk-link-reset">Cart: ({context.items.length})</a>
+                    <a className="uk-link-reset">Cart ({context.items.length})</a>
                   </Link>
                 </li>
                 {isAuthenticated ? (

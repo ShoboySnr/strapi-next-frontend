@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import App, { Container } from "next/app";
 import AppProvider from "../components/Context/AppProvider";
+import Notifications from 'react-notify-toast';
 import "../assets/css/style.css";  
 import { ApolloProvider } from "@apollo/react-hooks";  
 import withData from "../utils/apollo";
@@ -12,8 +13,14 @@ const HomeApp = ({ Component, pageProps, apollo, isAuthenticated }) => {
     <ApolloProvider client={apollo}>
       <Container>
         <AppProvider>
+        <Notifications
+            options={{
+              zIndex: 3000,
+              timeout: 1500,
+            }}
+          />
         <Head>
-          <title>Strapi blog</title>
+          <title>Strapi with Next</title>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
           <link
             rel="stylesheet"

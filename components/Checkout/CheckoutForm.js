@@ -4,6 +4,7 @@ import CardSection from "./CardSection";
 import { injectStripe } from "react-stripe-elements";
 import Strapi from "strapi-sdk-javascript/build/main";
 import Router from "next/router";
+import { notify } from 'react-notify-toast';
 
 const apiUrl = process.env.API_URL || "http://localhost:1337";
 const strapi = new Strapi(apiUrl);
@@ -45,9 +46,15 @@ class CheckoutForm extends React.Component {
             state: data.state,
             token: res.token.id
           })
-          .then(Router.push("/"));
+          .then(res => {
+            notify.show('Payment was successful', 'success');
+            Router.push("/")
+          });
       })
-      .catch(err => this.setState({ error: err }))
+      .catch(err => {
+        notify.show(err.message, 'error');
+        this.setState({ error: err })
+      });
   }
 
   render() {

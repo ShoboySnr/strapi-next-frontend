@@ -14,7 +14,7 @@ const Dishes = ({ restaurant }) => {
               <div className="uk-child-width-1-4@m uk-grid-match" data-uk-grid>
                 {
                   restaurant.dishes.map((dish, i) => {
-                    return <DishCard dish={dish} key={`blog__${restaurant.id}`} />;
+                    return <DishCard dish={dish} key={`blog__${restaurant.id}`} />
                   })
                 }
               </div>

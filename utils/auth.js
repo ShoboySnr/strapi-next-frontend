@@ -1,6 +1,7 @@
 import jwtDecode from "jwt-decode";
 import Cookies from "js-cookie";
 import Strapi from "strapi-sdk-javascript/build/main";
+import { notify } from 'react-notify-toast';
 
 import Router from "next/router";
 
@@ -13,18 +14,21 @@ export const strapiRegister = (username, email, password) => {
   }
   strapi.register(username, email, password).then(res => {
     setToken(res);
+  }).catch(err => {
+     notify.show(err.message, 'error');
   });
   return Promise.resolve();
 };
-//use strapi to get a JWT and token object, save
-//to approriate cookei for future requests
+
 export const strapiLogin = (email, password) => {
   if (!process.browser) {
     return;
   }
-  // Get a token
+
   strapi.login(email, password).then(res => {
     setToken(res);
+  }).catch(err => {
+     notify.show(err.message, 'error');
   });
   return Promise.resolve();
 };
